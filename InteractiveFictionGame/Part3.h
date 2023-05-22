@@ -40,13 +40,25 @@ public:
 		cout << "                                      |             |\n";
 		cout << "                                      |             |\n";
 		cout << "                                      |             |\n";
+		cout << "                                      |             |\n";
+		cout << "                                      |_____________|\n";
 
 		cout << " \n";
 		cout << "Inside, you see a few desks scattered around. Some have syringes, cotton swabs, and other\n";
 		cout << "lab equipment and machines on them. One has a file folder containing a stack of papers, and in the back\n";
 		cout << "of the room, there are several enclosures, each containing an animal.\n";
-		while (hasClue3 == false) {
+		cout << "What do you want to do?\n";
+		cout << "To examine the desks, press 1. To examine the enclosures, press 2. To examine the file folder, press 3.\n";
+		cout << "To check your inventory, press 4.\n";
 
+		while (hasClue3 == false) {
+			if (choice3 == 1) {
+				cout << "You go over to the desks and take a look. You see cotton swabs and syringes, as well as\n";
+				cout << "microscopes and other kinds of lab equipment. It seems like this is where the genetic material in\n";
+				cout << "the jars you saw in Lab 2 came from, and the swabs and syringes are probably used to collect\n";
+				cout << "samples. It seems like the microscopes and other machines are there to examine the results,\n";
+				cout << "perhaps before and after the experiments are conducted.\n"; 
+			}
 		}
 	}
 };
