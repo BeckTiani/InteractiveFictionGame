@@ -12,6 +12,8 @@ public:
 	//user input
 	int choice = 0;
 
+	bool start = false;
+
 	//decision 1
 	bool hasKey = false;
 
@@ -27,19 +29,25 @@ public:
 		vector<string> inventory;
 		inventory.push_back("flashlight");
 
-		cout << "You are Kaneshiro Momoe, an independent investigator. It\'s nighttime, and you\'re standing in front of the\n";
-		cout << "Chiba National Laboratory for Botanical Research.\n";
+		cout << "        * * * * * * * MITSUYO * * * * * * *        \n";
+		cout << "An interactive fiction game developed by Beck Tiani\n";
+		cout << " \n";
+		cout << "- - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+		cout << " \n";
+
+		cout << "You are Mitsuyo Sennari, an independent investigator. It\'s nighttime, and you\'re standing in front of the\n";
+		cout << "Chiba Laboratory for Botanical Research.\n";
 		cout << "You\'ve been investigating the disappearance of 13 year old Tsumiko Mizunokura,\n";
-		cout << "and your leads have led you to this lab, which was recently abandoned for unknown reasons.\n";
+		cout << "and your leads have led you to this lab, which was abandoned for unknown reasons.\n";
 		cout << "You brought a flashlight with you, which was a good call, because it\'s pitch black inside.\n";
 
 		//ASCII art
-		cout << "    ------------------------------\n";
-		cout << "    |  +=+=+=+=+=+=+=+=+=+=+=+=+  |\n";
-		cout << "    |  Chiba National Laboratory  |\n";
-		cout << "    |   for Botanical Research    |\n";
-		cout << "    |  +=+=+=+=+=+=+=+=+=+=+=+=+  |\n";
-		cout << "    ------------------------------\n";
+		cout << "     ------------------------------\n";
+		cout << "    |  +=+=+=+=+=+=+=+=+=+=+=+=+=  |\n";
+		cout << "    |       Chiba Laboratory       |\n";
+		cout << "    |    for Botanical Research    |\n";
+		cout << "    |  +=+=+=+=+=+=+=+=+=+=+=+=+=  |\n";
+		cout << "     ------------------------------\n";
 		cout << " \n";
 
 		cout << "What do you want to do?\n";
@@ -50,28 +58,29 @@ public:
 		while (hasKey == false) {
 			cin >> choice;
 
-			if (choice == 1) {
+			switch (choice) {
+			case 1:
 				cout << "The door is locked. Maybe there\'s a key laying around somewhere.\n";
 				hasKey = false;
-			}
-			else if (choice == 2) {
+				break;
+			case 2:
 				cout << "There are a few crates laying around, but not much else besides the building.\n";
 				cout << "The crates could have something hidden underneath.\n";
 				hasKey = false;
-			}
-			else if (choice == 3) {
+				break;
+			case 3:
 				cout << "You look under the crates, and you find a key hidden underneath.\n";
 				hasKey = true;
 				inventory.insert(inventory.begin(), "key");
 				cout << "Key has been added to your inventory.\n";
-			}
-			else if (choice == 4) {
+				break;
+			case 4: 
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory.size(); i++) {
 					cout << inventory[i] << " " << "\n";
 				}
-			}
-			else {
+				break;
+			default:
 				cout << "Invalid option, please try again.\n";
 				hasKey = false;
 			}
@@ -95,24 +104,24 @@ public:
 		while (doorOpen == false) {
 			cin >> choice;
 
-			if (choice == 1) {
+			switch (choice) {
+			case 1:
 				cout << "Using your flashlight to see, you insert the key into the lock and turn it.\n";
 				cout << "The lock clicks open, and you walk inside the darkened laboratory.\n";
 				doorOpen = true;
-			}
-			else if (choice == 3) {
-				cout << "You ate the key. Why on earth did you decide to do that?\n";
-				cout << "You\'re lucky there was another key hidden underneath the crates, but you better not try it again.\n";
-				doorOpen = false;
-			}
-			else if (choice == 2) {
+				break;
+			case 2:
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory.size(); i++) {
 					cout << inventory[i] << " " << "\n";
 				}
-
-			}
-			else {
+				break;
+			case 3:
+				cout << "You ate the key. Why on earth did you decide to do that?\n";
+				cout << "You\'re lucky there was another key hidden underneath the crates, but you better not try it again.\n";
+				doorOpen = false;
+				break;
+			default:
 				cout << "Invalid option, please try again.\n";
 				doorOpen = false;
 			}
@@ -136,14 +145,15 @@ public:
 
 		cout << " \n";
 		cout << "What do you want to do?\n";
-		cout << "To look around, press 1. To read the lab report, press 2. To enter the code, press 3. To check your inventory,\n";
-		cout << "press 4. To leave the laboratory, press 5.\n";
+		cout << "To look around, press 1. To read the lab report, press 2. To enter the code, press 3. To check your\n";
+		cout << "inventory, press 4.\n";
 
 		//decision 3; moves on once code for the lock has been found
 		while (hasCode == false) {
 			cin >> choice;
 
-			if (choice == 1) {
+			switch (choice) {
+			case 1:
 				cout << "There\'s a lab report laying on a desk, as well as microscopes, petri dishes, plant samples, pipettes,\n";
 				cout << "and half-filled flasks filled with a mysterious green-blue liquid.\n";
 
@@ -152,35 +162,37 @@ public:
 
 				inventory.insert(inventory.begin(), "lab report");
 				cout << "Lab report has been added to your inventory.\n";
-			}
-			else if (choice == 2 && hasReport == false) {
-				cout << "You need to find the lab report before you can read it.\n";
-			}
-			else if (choice == 2 && hasReport == true) {
-				cout << "You pick up the lab report. It reads:\n";
-				cout << " -------------------------------------------\n";
-				cout << "| EXPERIMENT LOG: #32500                    |\n";
-				cout << "| SUBJECT: XXXXXXX XXXXXXXXXX               |\n";
-				cout << "| DATE: X5/2X/XX08                          |\n";
-				cout << "|                                           |\n";
-				cout << "| EXPERIMENT: Subject was exposed to        |\n";
-				cout << "| [REDACTED] for a brief period of          |\n";
-				cout << "| time. [REDACTED] immediately took hold,   |\n";
-				cout << "| but subject did not react well.           |\n";
-				cout << "|                                           |\n";
-				cout << "| RESULTS: After X minutes of exposure,     |\n";
-				cout << "| subject began fighting back against       |\n";
-				cout << "| [REDACTED] and continued to do so until   |\n";
-				cout << "| researchers physically restrained the     |\n";
-				cout << "| physically restrained the subject.        |\n";
-				cout << "| Dr. [REDACTED] decided to call off the    |\n";
-				cout << "| experiment early. The experiment will     |\n";
-				cout << "| continue after subject has had time to    |\n";
-				cout << "| calm down.                                |\n";
-				cout << "|                                           |\n";
-				cout << " -------------------------------------------\n";
-			}
-			else if (choice == 3) {
+				break;
+			case 2:
+				if (hasReport == false) {
+					cout << "You need to find the lab report before you can read it.\n";
+				}
+				else if (hasReport == true) {
+					cout << "You pick up the lab report. It reads:\n";
+					cout << " -------------------------------------------\n";
+					cout << "| EXPERIMENT LOG: #32500                    |\n";
+					cout << "| SUBJECT: XXXXXXX XXXXXXXXXX               |\n";
+					cout << "| DATE: X5/2X/XX08                          |\n";
+					cout << "|                                           |\n";
+					cout << "| EXPERIMENT: Subject was exposed to        |\n";
+					cout << "| [REDACTED] for a brief period of          |\n";
+					cout << "| time. [REDACTED] immediately took hold,   |\n";
+					cout << "| but subject did not react well.           |\n";
+					cout << "|                                           |\n";
+					cout << "| RESULTS: After X minutes of exposure,     |\n";
+					cout << "| subject began fighting back against       |\n";
+					cout << "| [REDACTED] and continued to do so until   |\n";
+					cout << "| researchers physically restrained the     |\n";
+					cout << "| physically restrained the subject.        |\n";
+					cout << "| Dr. [REDACTED] decided to call off the    |\n";
+					cout << "| experiment early. The experiment will     |\n";
+					cout << "| continue after subject has had time to    |\n";
+					cout << "| calm down.                                |\n";
+					cout << "|                                           |\n";
+					cout << " -------------------------------------------\n";
+				}
+				break;
+			case 3:
 				cout << "Enter the code: ";
 				cin >> choice;
 
@@ -195,15 +207,15 @@ public:
 
 					hasCode = false;
 				}
-			}
-			else if (choice == 4) {
+				break;
+			case 4:
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory.size(); i++) {
 					cout << inventory[i] << " " << "\n";
 				}
-			}
-			else if (choice == 5) {
-				cout << "You can\'t just leave now and give up on Tsumiko, you need to find more clues to find her.\n";
+				break;
+			default:
+				cout << "Invalid option, please try again.\n";
 			}
 		}
 	}

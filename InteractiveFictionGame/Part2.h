@@ -23,6 +23,8 @@ public:
 	void part2() {
 
 		vector<string> inventory2;
+
+		//adding all items the player has so far
 		inventory2.push_back("flashlight");
 		inventory2.insert(inventory2.begin(), "key");
 		inventory2.insert(inventory2.begin(), "lab report");
@@ -54,45 +56,39 @@ public:
 
 		//decision 4; moves on once player has found the key card
 		while (hasKeyCard == false) {
-
 			cin >> choice2;
 
-			if (choice2 == 1) {
+			switch (choice2) {
+			case 1:
 				cout << "Just like in the other hallway, there's lab equipment and papers scattered about, along with\n";
 				cout << "some plants.\n";
-
+				break;
+			case 2:
+				cout << "You examine the various pieces of lab equipment laying around, but you don\'t find anything helpful.\n";
 				hasKeyCard = false;
-			}
-			else if (choice2 == 2) {
-				cout << "You examine the various pieces of lab equipment laying around, but you don\'nt find anything helpful.\n";
-
-				hasKeyCard = false;
-			}
-			else if (choice2 == 3) {
+				break;
+			case 3:
 				cout << "You shuffle through the papers, but you don\'t find anything of interest.\n";
-
 				hasKeyCard = false;
-			}
-			else if (choice2 == 4) {
+				break;
+			case 4:
 				cout << "You examine each plant and the pot it\'s in. Some seem to be abnormally large, or have odd\n";
 				cout << "colors that don\'t occur naturally in plants. Are some of them...moving? No, it can't be.\n";
 				cout << "It's probably just a draft. It is a bit cold in here. While examining the plants, you find\n";
 				cout << "what looks like a key card hidden underneath one of the pots.\n";
-
 				inventory2.insert(inventory2.begin(), "key card");
-				cout << "Key card has been added to your inventory.\n";
 
+				cout << "Key card has been added to your inventory.\n";
 				hasKeyCard = true;
-			}
-			else if (choice2 == 5) {
+				break;
+			case 5:
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory2.size(); i++) {
 					cout << inventory2[i] << " " << "\n";
 				}
-			}
-			else {
-				cout << "Invalid choice, please try again.\n";
-				hasKeyCard = false;
+				break;
+			default:
+				cout << "Invalid option, please try again.\n";
 			}
 		}
 
@@ -137,15 +133,15 @@ public:
 		while (hasClue1 == false) {
 			cin >> choice2;
 
-			if (choice2 == 1) {
+			switch (choice2) {
+			case 1:
 				cout << "The plants look carnivorous, but not like anything you\'ve ever seen or heard of. These look\n";
 				cout << "like mutated versions of normal carniverous plants. Some have large, sharp teeth, others have\n";
 				cout << "long tentacles, and others are covered in spikes. They appear to be dormant, but you don'\t want\n";
 				cout << "to take any chances.\n";
-
-				hasClue1 = false;
-			}
-			else if (choice2 == 2) {
+				hasClue1 = false; 
+				break;
+			case 2:
 				cout << "You pick up one of the letters laying on the desk. It reads:\n";
 				cout << "-----------------------------------------\n";
 				cout << "| Dear Dr. [REDACTED],                   |\n";
@@ -168,30 +164,28 @@ public:
 				cout << "| Dr. [REDACTED]                         |\n";
 				cout << "|________________________________________|\n";
 				cout << " \n";
-
 				cout << "You wonder what the experiment in question is. Could it have something to do with Tsumiko?\n";
 				cout << "You\'ll need to find more clues to figure out what was going on in this lab.\n";
 
 				inventory2.insert(inventory2.begin(), "lab 1 letter");
 				cout << "Letter has been added to your inventory.\n";
-
 				hasClue1 = true;
-			}
-			else if (choice2 == 3) {
+				break;
+			case 3:
 				cout << "You take a closer look at the test tubes. Some seem to be some sort of growth hormone, and others,\n";
-				cout << "based on their labels written in neat Japanese, contain genetic material from other plants.\n";
+				cout << "based on their labels written in neat Japanese, contain genetic material from other organisms.\n";
 				cout << "Were they trying to genetically modify the plants? What could the goal possibly be if the results\n";
-				cout << "look like this? What kind of plants did they use? You have a million questions, but no answers.\n";
+				cout << "look like this? What kind of organisms did they use? You have a million questions, but no answers.\n";
 
 				hasClue1 = false;
-			}
-			else if (choice2 == 4) {
+				break;
+			case 4:
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory2.size(); i++) {
 					cout << inventory2[i] << " " << "\n";
 				}
-			}
-			else {
+				break;
+			default:
 				cout << "Invalid option, please try again.\n";
 				hasClue1 = false;
 			}
@@ -225,7 +219,8 @@ public:
 		while (hasClue2 == false) {
 			cin >> choice2;
 
-			if (choice2 == 1) {
+			switch (choice2) {
+			case 1:
 				cout << "You slowly and quietly approach the enclosures and examine the plants inside. You notice that\n";
 				cout << "these plants look much different than the ones in Lab 1. They have animal characteristics, or\n";
 				cout << "plant characteristics that have adapted to behave like their animal counterparts.\n";
@@ -233,18 +228,16 @@ public:
 				cout << "of animal ears, and all seem to have eyes incorporated somewhere into the plant. They all appear\n";
 				cout << "to be sleeping right now, but you\'re not sure how easily they\'ll wake up, nor are you sure\n";
 				cout << "what they can do.\n";
-
 				hasClue2 = false;
-			}
-			else if (choice2 == 2) {
+				break;
+			case 2:
 				cout << "Although the labels are starting to fade slightly, they\'re still readable. According to the\n";
 				cout << "labels, each contains genetic material from a different animal. Scanning the jars, you see ones\n";
 				cout << "containing genetic material from cats, dogs, tanuki, mongooses, frogs, and crabs, among others.\n";
 				cout << "It seems like this is what was used to give the plants their animal characteristics.\n";
-
 				hasClue2 = false;
-			}
-			else if (choice2 == 3) {
+				break;
+			case 3: 
 				cout << "You pick up one of the lab reports laying on a desk. It reads:\n";
 				cout << " ---------------------------------------------\n";
 				cout << "| EXPERIMENT LOG: #49085                      |\n";
@@ -271,20 +264,18 @@ public:
 
 				inventory2.insert(inventory2.begin(), "lab report 2");
 				cout << "Lab report 2 has been added to your inventory.\n";
-
 				cout << "You also see a note attached to the top of the lab report, which says \"Notice to all personnel:\"";
-				cout << "Do not disturb or remove plants from their enclosures unless you are wearing the proper safety\n";
+			 	cout << "Do not disturb or remove plants from their enclosures unless you are wearing the proper safety\n";
 				cout << "equipment. Plants may only be handled by personnel with security level 7 or higher.\"\n";
-
 				hasClue2 = true;
-			}
-			else if (choice2 == 4) {
+				break;
+			case 4:
 				cout << "Your inventory contains: \n";
 				for (int i = 0; i < inventory2.size(); i++) {
 					cout << inventory2[i] << " " << "\n";
 				}
-			}
-			else {
+				break;
+			default:
 				cout << "Invalid option, please try again.\n";
 				hasClue2 = false;
 			}

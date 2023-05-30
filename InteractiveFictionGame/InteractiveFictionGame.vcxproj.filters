@@ -29,5 +29,8 @@
     <ClInclude Include="Part3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Part4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
